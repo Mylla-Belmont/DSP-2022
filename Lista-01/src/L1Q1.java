@@ -26,3 +26,7 @@ public class L1Q1 {
         br.close();
     }
 }
+
+//Tá quase lá
+//Força
+//Vai na força do odio
