@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch L1Q2",
+            "request": "launch",
+            "mainClass": "L1Q2",
+            "projectName": "DSP-2022-1_ad8b6682"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

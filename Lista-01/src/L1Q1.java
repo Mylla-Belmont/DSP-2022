@@ -13,20 +13,27 @@ public class L1Q1 {
         BufferedReader br = new BufferedReader(isr);
         String s = br.readLine();
 
-        System.out.println("Agora digite a substring do arquivo:");
-        String subString = input.nextLine();
+        OutputStream os= new FileOutputStream(fileName);
+        OutputStreamWriter osw= new OutputStreamWriter(os);
+        BufferedWriter bw= new BufferedWriter(osw);
 
-        while(s != null){
-            if(s.contains(subString))
-                System.out.println(s);
+        System.out.println("Digite N1:");
+        String n1 = input.nextLine();
+        bw.write(n1);
+
+        bw.newLine();
+
+        System.out.println("Digite N2:");
+        String n2 = input.nextLine();
+        bw.write(n2);
+       
+        while(s != null) {
+            System.out.println(s);
             s = br.readLine();
         }
         
         input.close();
         br.close();
+        bw.close();
     }
 }
-
-//Tá quase lá
-//Força
-//Vai na força do odio
