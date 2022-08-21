@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class L1Q2 {
     public static void main(String[] args) throws Exception {
-        
+
         System.out.println("Qual o arquivo de origem?");
         Scanner input = new Scanner(System.in);
         String originFile = input.nextLine();
@@ -19,9 +19,7 @@ public class L1Q2 {
             os.write(c);
         }
 
-        long time = System.currentTimeMillis();
-        System.out.println("Cópia executada com sucesso em: \n" + time + " milisegundos");
-        
+        System.out.println("Cópia executada com sucesso!");
         input.close();
         is.close();  
         os.close();   
