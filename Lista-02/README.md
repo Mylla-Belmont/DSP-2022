@@ -1,4 +1,4 @@
-##LISTA 02
+## LISTA 02
 
 1. Crie uma aplicação Java para receber via argumento de linha de comando um nome de arquivo texto e uma string S. A aplicação deve exibir todas as linhas que tenham S como substring, independente dos caracteres estarem em caixa alta ou baixa (case-insensitive).
 
@@ -16,5 +16,5 @@
         arquivo = meu_arquivo.txt
         linha_inicial = 1
         linha_final = 3
-        
+
     Depois, escreva uma classe Java que exibe da linha_inicial até a linha_final do arquivo, conforme definidos no arquivo de propriedades config.properties.
