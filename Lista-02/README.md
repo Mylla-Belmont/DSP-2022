@@ -1,18 +1,20 @@
-## Getting Started
+##LISTA 02
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+1. Crie uma aplicação Java para receber via argumento de linha de comando um nome de arquivo texto e uma string S. A aplicação deve exibir todas as linhas que tenham S como substring, independente dos caracteres estarem em caixa alta ou baixa (case-insensitive).
 
-## Folder Structure
+2. Escreva uma aplicação Java para receber via argumentos de linha de comando três nomes de arquivos. Deve-se gerar um novo arquivo a partir da concatenação dos dois primeiros arquivos. O nome do novo arquivo gerado é o último dos três nomes de arquivos recebidos como entrada.
 
-The workspace contains two folders by default, where:
+3. Escolha e baixe um arquivo csv de no mínimo 1 MB, a partir da plataforma Kaggle (https://www.kaggle.com/datasets) e use-o nas questões a seguir. Na resolução desta questão, não enviar os arquivos envolvidos, mas somente os resultados pedidos em arquivo PDF. Envie somente o link do arquivo escolhido.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+    Gere as somas checksum, md5 e sha1 do arquivo usando utilitários de linha de comando do próprio sistema operacional ou instalado nele.
+    Compacte via linha de comando o arquivo csv original usando compressões zip, gzip e rar. Depois disso compare os tempos e tamanhos dos arquivos gerados. Dica: para obter o tempo de execução, use o comando time.
+        Exemplo: time zip iris.zip iris.csv
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+4. Escreva um arquivo de propriedades Java via editor de textos. Esse arquivo deve ter os dados de chave e valor. Exemplo:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+    arquivo config.properties
+        arquivo = meu_arquivo.txt
+        linha_inicial = 1
+        linha_final = 3
+        
+    Depois, escreva uma classe Java que exibe da linha_inicial até a linha_final do arquivo, conforme definidos no arquivo de propriedades config.properties.
