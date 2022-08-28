@@ -19,7 +19,21 @@ public class L2Q2 {
         System.out.println("Digite o nome do 3° arquivo:");
         String fileName3 = input.nextLine();
         PrintStream ps = new PrintStream(fileName3);
+
+        while(readFile1.hasNextLine()){
+            ps.println(readFile1.nextLine());
+        }
+
+        while(readFile2.hasNextLine()){
+            ps.println(readFile2.nextLine());
+        }
+
+        File file = new File("C:\\Users\\Camila\\Documents\\GitHub\\DSP-2022-1\\Lista-02" + fileName3);
+
+        if(file.exists())
+            System.out.println("Cópia executada com sucesso!");
         
+        ps.close();
         input.close();
         readFile1.close();
         readFile2.close();
