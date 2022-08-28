@@ -8,20 +8,18 @@ public class L2Q1 {
         Scanner input = new Scanner(System.in);
         String fileName = input.nextLine();
 
-        InputStream is = new FileInputStream(fileName);
-        InputStreamReader isr = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(isr);
-        String s = br.readLine();
-
         System.out.println("Agora digite a substring do arquivo:");
-        String subString = input.nextLine();
-
-        while(s != null){
-            if(s.contains(subString))
-                System.out.println(s);
-            s = br.readLine();
+        Scanner input2 = new Scanner(System.in);
+        PrintStream ps= new PrintStream(fileName);
+        
+        while(input2.hasNextLine()) {
+            ps.println(input2.nextLine());
+            if(input2.nextLine().equals("stop"))
+                break;
         }
+
+        input2.close();
         input.close();
-        br.close();
+        ps.close();
     }
 }
