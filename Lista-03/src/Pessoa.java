@@ -38,10 +38,10 @@ public class Pessoa implements java.io.Serializable {
     }
 
     public String toString() {
-        return "Pessoa [id=" + id +
-                ", nome=" + name +
-                ", email=" + email +
-                ", numero=" + number +
+        return "Pessoa [id = " + id +
+                ", nome = " + name +
+                ", email = " + email +
+                ", numero = " + number +
                 "]";
     }
 }
