@@ -1,0 +1,19 @@
+{
+  "livros" : [ {
+    "isbn" : 1,
+    "nome" : "Livro_terror",
+    "genero" : "Terror"
+  }, {
+    "isbn" : 3,
+    "nome" : "Livro_romance",
+    "genero" : "Romance"
+  }, {
+    "isbn" : 2,
+    "nome" : "Livro_ficção",
+    "genero" : "Ficção"
+  }, {
+    "isbn" : 4,
+    "nome" : "Livro_Didatico",
+    "genero" : "Didatico"
+  } ]
+}
