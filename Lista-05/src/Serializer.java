@@ -20,7 +20,7 @@ public class Serializer {
         lista.add(livro3);
         lista.add(livro4);
         Livros livros = new Livros(lista);
-
+        
         try {
             ObjectMapper jsonString = new ObjectMapper();
             jsonString.writerWithDefaultPrettyPrinter().writeValue(new File("livros.json"), livros);
