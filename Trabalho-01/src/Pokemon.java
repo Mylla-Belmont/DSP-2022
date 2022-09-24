@@ -78,8 +78,12 @@ public class Pokemon {
     }
 
     public String toString() {
-        return "Personagem [ataque=" + ataque + ", ataque_especial=" + ataque_especial + ", defesa=" + defesa
-                + ", defesa_especial=" + defesa_especial + ", hp=" + hp + ", nome=" + nome + ", velocidade="
-                + velocidade + "]";
+        return "[nome=" + nome + 
+                ", hp=" + hp + 
+                ", ataque=" + ataque + 
+                ", defesa=" + defesa +
+                ", velocidade=" + velocidade + 
+                ", ataque_especial=" + ataque_especial + 
+                ", defesa_especial=" + defesa_especial + "]";
     }
 }

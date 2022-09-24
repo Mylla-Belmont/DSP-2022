@@ -1,23 +1,20 @@
 import java.util.List;
-import java.util.Scanner;
 import java.io.File;
+import java.util.Scanner;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
         System.out.println("Qual é esse pokemon?");
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        Pokemons pokemons = new Pokemons();
-
+        List<Pokemon> pokemon = new ArrayList<Pokemon>();
+       
         while(true) {
-            if(input.equals("stop"))
-                break;
-
-            System.out.println("Nome:");
+            System.out.println("\n" + "Nome:");
             String nome = scanner.nextLine();
 
             System.out.println("HP:");
@@ -44,7 +41,6 @@ public class App {
             String N_defesa_especial = scanner.nextLine();
             int defesa_especial = Integer.parseInt(N_defesa_especial);
 
-            List<Pokemon> pokemon = new ArrayList<Pokemon>();
             pokemon.add(new Pokemon(nome, 
                                     hp, 
                                     ataque, 
@@ -52,17 +48,22 @@ public class App {
                                     velocidade, 
                                     ataque_especial, 
                                     defesa_especial));
-
-            pokemons.setPokemons(pokemon);
+            
+            System.out.println("\nContinua? (Digite 1 para sim)");
+            String input = scanner.nextLine();
+            if (!input.equals("1"))
+                break;
         }
-
+        
         try {
+            Pokemons pokemons = new Pokemons(pokemon);
             ObjectMapper jsonString = new ObjectMapper();
             jsonString.writerWithDefaultPrettyPrinter().writeValue(new File("pokemons.json"), pokemons);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(pokemons);
         scanner.close();
     }
 }
+
+// Resolver append arquivo
