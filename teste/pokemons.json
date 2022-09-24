@@ -1,0 +1,35 @@
+{
+  "pokemons" : [ {
+    "nome" : "Picachu",
+    "hp" : 1,
+    "ataque" : 1,
+    "defesa" : 1,
+    "velocidade" : 1,
+    "ataque_especial" : 1,
+    "defesa_especial" : 1
+  }, {
+    "nome" : "Bubasauro",
+    "hp" : 2,
+    "ataque" : 2,
+    "defesa" : 2,
+    "velocidade" : 2,
+    "ataque_especial" : 2,
+    "defesa_especial" : 2
+  }, {
+    "nome" : "Igor",
+    "hp" : 3,
+    "ataque" : 3,
+    "defesa" : 3,
+    "velocidade" : 3,
+    "ataque_especial" : 3,
+    "defesa_especial" : 3
+  }, {
+    "nome" : "Jo�o",
+    "hp" : 4,
+    "ataque" : 4,
+    "defesa" : 4,
+    "velocidade" : 4,
+    "ataque_especial" : 4,
+    "defesa_especial" : 4
+  } ]
+}

@@ -1,3 +1,5 @@
+package com.camila;
+
 import java.util.List;
 
 public class Pokemons {
@@ -19,6 +21,6 @@ public class Pokemons {
     }
 
     public String toString() {
-        return "Pokemons [pokemons=" + pokemons + "]";
+        return "[Pokemons: " + pokemons + "]";
     }
 }

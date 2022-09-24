@@ -1,3 +1,5 @@
+package com.camila;
+
 public class Pokemon {
     
     private String nome;
@@ -78,12 +80,12 @@ public class Pokemon {
     }
 
     public String toString() {
-        return "[nome=" + nome + 
-                ", hp=" + hp + 
-                ", ataque=" + ataque + 
-                ", defesa=" + defesa +
-                ", velocidade=" + velocidade + 
-                ", ataque_especial=" + ataque_especial + 
-                ", defesa_especial=" + defesa_especial + "]";
+        return "{nome= " + nome + 
+                ", hp= " + hp + 
+                ", ataque= " + ataque + 
+                ", defesa= " + defesa +
+                ", velocidade= " + velocidade + 
+                ", ataque_especial= " + ataque_especial + 
+                ", defesa_especial= " + defesa_especial + "}";
     }
 }
