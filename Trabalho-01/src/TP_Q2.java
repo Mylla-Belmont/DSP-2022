@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class App {
+public class TP_Q2 {
     public static void main(String[] args){
 
         System.out.println("Qual é esse pokemon?");
