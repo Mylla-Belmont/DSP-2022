@@ -1,5 +1,0 @@
-// ObjectMapper mapper =  new ObjectMapper();
-//         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-//         Pokemons pokemons = mapper.readValue(new File(input), Pokemons.class);
-
-//         System.out.println(pokemons);

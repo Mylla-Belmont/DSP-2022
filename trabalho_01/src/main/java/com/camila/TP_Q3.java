@@ -39,6 +39,10 @@ public class TP_Q3 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        // ARQUIVO XML
+        
+
         scanner.close();
     }
 }
