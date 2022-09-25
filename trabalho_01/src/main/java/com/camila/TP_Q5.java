@@ -21,8 +21,7 @@ public class TP_Q5 {
             String myChecksum  = DatatypeConverter.printHexBinary(digest).toUpperCase();
 
             System.out.println("Checksum: " + checksum);
-            System.out.println("HASH SHA-1: " + myChecksum);
-            System.out.println("\n");
+            System.out.println("Hash SHA-1: " + myChecksum);
 
         } catch (Exception e) {
             e.printStackTrace();
