@@ -58,8 +58,9 @@ public class TP_Q2 {
         }
         
         try {
+            Pokemons pokemons = new Pokemons(pokemon);
             ObjectMapper jsonString = new ObjectMapper();
-            jsonString.writerWithDefaultPrettyPrinter().writeValue(new File("pokemons.json"), pokemon);
+            jsonString.writerWithDefaultPrettyPrinter().writeValue(new File("pokemons.json"), pokemons);
         } catch (IOException e) {
             e.printStackTrace();
         }
