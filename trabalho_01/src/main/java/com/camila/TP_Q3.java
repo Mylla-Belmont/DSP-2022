@@ -13,6 +13,7 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class TP_Q3 {
     public static void main(String[] args) throws IOException {
@@ -32,17 +33,23 @@ public class TP_Q3 {
         }
 
         try {
-            Writer writer = Files.newBufferedWriter(Paths.get("pokemon.csv"));
-            StatefulBeanToCsv<Pokemon> beanToCsv = new StatefulBeanToCsvBuilder<Pokemon>(writer).build();
+            Writer file = Files.newBufferedWriter(Paths.get("pokemons.csv"));
+            StatefulBeanToCsv<Pokemon> beanToCsv = new StatefulBeanToCsvBuilder<Pokemon>(file).build();
             beanToCsv.write(pokemon);
-            writer.close();
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         // ARQUIVO XML
-        
-
+        try {
+            Writer file = Files.newBufferedWriter(Paths.get("pokemons.xml"));
+            XmlMapper xml = new XmlMapper();
+            xml.enable(SerializationFeature.INDENT_OUTPUT);
+            xml.writeValue(file, pokemons);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         scanner.close();
     }
 }

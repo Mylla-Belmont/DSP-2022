@@ -1,0 +1,22 @@
+<pokebola>
+  <pokemons>
+    <pokemon>
+      <nome>teste</nome>
+      <hp>1</hp>
+      <ataque>1</ataque>
+      <defesa>1</defesa>
+      <velocidade>1</velocidade>
+      <ataque_especial>1</ataque_especial>
+      <defesa_especial>1</defesa_especial>
+    </pokemon>
+    <pokemon>
+      <nome>teste2</nome>
+      <hp>2</hp>
+      <ataque>2</ataque>
+      <defesa>2</defesa>
+      <velocidade>2</velocidade>
+      <ataque_especial>2</ataque_especial>
+      <defesa_especial>2</defesa_especial>
+    </pokemon>
+  </pokemons>
+</pokebola>
