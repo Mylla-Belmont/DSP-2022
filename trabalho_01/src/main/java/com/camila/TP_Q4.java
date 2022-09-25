@@ -12,7 +12,7 @@ import java.util.zip.ZipOutputStream;
 public class TP_Q4 {
     public static void main(String[] args){
 
-        final int TAMANHO_BUFFER = 4096; 
+        final int TAMANHO_BUFFER = 4096;    //4kb
 
         System.out.println("Digite o nome do arquivo:");
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +35,7 @@ public class TP_Q4 {
             }
             origem.close();
             saida.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

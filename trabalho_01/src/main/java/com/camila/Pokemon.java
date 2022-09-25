@@ -12,8 +12,7 @@ public class Pokemon {
 
     public Pokemon() {}
 
-    public Pokemon(String nome, int hp, int ataque, int defesa, int velocidade, int ataque_especial,
-            int defesa_especial) {
+    public Pokemon(String nome, int hp, int ataque, int defesa, int velocidade, int ataque_especial, int defesa_especial) {
         this.nome = nome;
         this.hp = hp;
         this.ataque = ataque;

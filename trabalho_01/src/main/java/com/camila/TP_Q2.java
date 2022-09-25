@@ -67,5 +67,3 @@ public class TP_Q2 {
         scanner.close();
     }
 }
-
-// Resolver append arquivo
