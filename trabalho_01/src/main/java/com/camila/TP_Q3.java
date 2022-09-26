@@ -25,7 +25,7 @@ public class TP_Q3 {
         // ARQUIVO CSV
         ObjectMapper mapper =  new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        Pokemons pokemons = mapper.readValue(new File(input), Pokemons.class);
+        Pokemons pokemons = mapper.readValue(new File(input), Pokemons.class); //Deserializa
 
         List<Pokemon> pokemon = new ArrayList<>();
         for (Pokemon pk : pokemons.getPokemons()) {
