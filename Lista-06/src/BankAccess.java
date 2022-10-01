@@ -26,7 +26,13 @@ public class BankAccess {
             String sql = "select id, cpf, matricula, nome, email, telefone from alunos";
             ResultSet result = bank.select(sql);
             while (result.next()) {
-                    
+                int id = result.getInt("id");
+                int cpf = result.getInt("cpf");
+                int matricula = result.getInt("matricula");
+                String nome = result.getString("nome");
+                String email = result.getString("email");
+                int telefone = result.getInt("telefone");
+                System.out.println("{" + id + ", " + cpf + ", " + matricula + ", " + nome + ", " + email + ", " + telefone + "}");
             }
         } catch (Exception e) {
             e.printStackTrace();
