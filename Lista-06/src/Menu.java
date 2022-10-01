@@ -1,6 +1,31 @@
-import java.util.Scanner;
+import java.util.Scanner; 
 
 public class Menu {
+
+    private static void insertAluno (Scanner scanner) {
+        System.out.println("Digite o id:");
+        String id_t = scanner.nextLine();
+        System.out.println("Digite o cpf:");
+        String cpf_t = scanner.nextLine();
+        System.out.println("Digite a matricula:");
+        String matricula_t = scanner.nextLine();
+        System.out.println("Digite o nome:");
+        String nome = scanner.nextLine();
+        System.out.println("Digite o email:");
+        String email = scanner.nextLine();
+        System.out.println("Digite o telefone:");
+        String telefone_t = scanner.nextLine();
+        
+        int id = Integer.parseInt(id_t);
+        int cpf = Integer.parseInt(cpf_t);
+        int matricula = Integer.parseInt(matricula_t);
+        int telefone = Integer.parseInt(telefone_t);
+
+        BankAccess bank = new BankAccess();
+        bank.insertAluno(id, cpf, matricula, nome, email, telefone);
+        System.out.println("Aluno inserido com sucesso!");
+    }  
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -13,7 +38,7 @@ public class Menu {
             String input = scanner.nextLine();
 
             if(input.equals("1")) {
-                // INSERIR ALUNO
+                insertAluno(scanner);
             } else if(input.equals("2")) {
                 // LISTAR ALUNOS
             } else if (input.equals("3")) {
