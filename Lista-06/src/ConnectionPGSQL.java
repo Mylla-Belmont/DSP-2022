@@ -1,19 +1,16 @@
-import java.beans.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class ConnectionPGSQL {
-   
     Connection connection = null;
 
     public void connect (String url, String user, String password) {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Conectado com sucesso");
-            connection.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -21,27 +18,31 @@ public class ConnectionPGSQL {
         }
     }
 
-    public int update (String sql){
+    public void disconnect() {
         try {
-            Statement stmt = (Statement) connection.createStatement();
-            int res = ((java.sql.Statement) stmt).executeUpdate(sql);
             connection.close();
-            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void update (String sql){
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.executeUpdate();
         }catch (Exception e) {
             e.printStackTrace();
-            return 0;
         }
     }
 
     public ResultSet select (String sql){
         try {
-            Statement stmt = (Statement) connection.createStatement(); 
-            ResultSet res = ((java.sql.Statement) stmt).executeQuery(sql);
-            connection.close();
-            return res;
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet result = stmt.executeQuery();
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
-        }
+        } return null;
     }
 }
