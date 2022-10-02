@@ -1,6 +1,7 @@
 import java.sql.ResultSet;
 
 public class BankAccess {
+    
     private ConnectionPGSQL connect (){
         ConnectionPGSQL bank = new ConnectionPGSQL();
         bank.connect("jdbc:postgresql://localhost/postgres", "postgres", "creepypasta");  

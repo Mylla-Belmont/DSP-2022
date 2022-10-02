@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 public class ConnectionPGSQL {
+
     Connection connection = null;
 
     public void connect (String url, String user, String password) {
@@ -25,7 +26,6 @@ public class ConnectionPGSQL {
             e.printStackTrace();
         }
     }
-
 
     public void update (String sql){
         try {
