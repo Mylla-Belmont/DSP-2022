@@ -6,7 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @ToString
-public class Alunos {
+public class Aluno {
     @Getter @Setter private int id;
     @NonNull @Getter @Setter private String cpf;
     @NonNull @Getter @Setter private String matricula; 

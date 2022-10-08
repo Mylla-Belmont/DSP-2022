@@ -1,12 +1,14 @@
 package lista_07.lista_07.dao;
 
-import lista_07.lista_07.entidade.Alunos;
+import lista_07.lista_07.entidade.Aluno;
 
-public class ClienteDAO {
+public interface ClienteDAO {
     
-    public void salvar(Alunos aluno) { };
+    public void salvar(Aluno aluno);
 
-    public void deletar(int id) { };
+    public void deletar(int id);
 
-    public Alunos consultar(int id) { return null; };
+    public Aluno consultar(int id);
+
+    // alterar - update
 }

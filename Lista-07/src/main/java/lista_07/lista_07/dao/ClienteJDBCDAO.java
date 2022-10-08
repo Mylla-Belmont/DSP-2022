@@ -3,7 +3,7 @@ package lista_07.lista_07.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import lista_07.lista_07.entidade.Alunos;
+import lista_07.lista_07.entidade.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -20,7 +20,7 @@ public class ClienteJDBCDAO {
 
     public ClienteJDBCDAO() { }
 
-    public void salvar(Alunos aluno) {
+    public void salvar(Aluno aluno) {
         String insert_sql = "insert into Alunos (id, cpf, matricula, nome, email, telefone)" + 
                             "values (:id, :cpf, :matricula, :nome, :email, :telefone)";
         String update_sql = "update Alunos set cpf = :cpf, matricula = :matricula, nome = :nome" + 
@@ -47,8 +47,8 @@ public class ClienteJDBCDAO {
         jdbcTemplate.update(delete_sql, params);
     }
 
-    private Alunos map(ResultSet rs) throws SQLException {
-        Alunos aluno = new Alunos();
+    private Aluno map(ResultSet rs) throws SQLException {
+        Aluno aluno = new Aluno();
         aluno.setId(rs.getInt("id"));
         aluno.setCpf(rs.getString("cpf"));
         aluno.setMatricula(rs.getString("matricula"));
@@ -58,7 +58,7 @@ public class ClienteJDBCDAO {
         return aluno;
     }
 
-    public Alunos consultar(int id) {
+    public Aluno consultar(int id) {
         String find_sql = "select id, cpf, matricula, nome, email, telefone" +
                           "from Alunos where id = :id_";
         SqlParameterSource params = new MapSqlParameterSource()
