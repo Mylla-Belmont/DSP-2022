@@ -9,6 +9,4 @@ public interface ClienteDAO {
     public void deletar(int id);
 
     public Aluno consultar(int id);
-
-    // alterar - update
 }

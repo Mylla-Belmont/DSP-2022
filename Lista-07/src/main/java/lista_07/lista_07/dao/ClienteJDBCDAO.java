@@ -66,5 +66,3 @@ public class ClienteJDBCDAO {
         return jdbcTemplate.queryForObject(find_sql, params, (rs, rowNum) -> map(rs));
     }
 }
-
-//Melhorar dps
