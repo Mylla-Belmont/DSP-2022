@@ -23,11 +23,13 @@ public class Menu implements CommandLineRunner {
 	}
 
 	private static void buscarAluno(Aluno aluno) {
+		String id = JOptionPane.showInputDialog("ID", aluno.getId());
 		String cpf = JOptionPane.showInputDialog("CPF", aluno.getCpf());
 		String matricula  = JOptionPane.showInputDialog("MATRICULA", aluno.getMatricula());
 		String nome  = JOptionPane.showInputDialog("NOME", aluno.getNome());
 		String email  = JOptionPane.showInputDialog("EMAIL", aluno.getEmail());
 		String telefone  = JOptionPane.showInputDialog("TELEFONE", aluno.getTelefone());
+		aluno.setId(Integer.parseInt(id));
 		aluno.setCpf(cpf);
 		aluno.setMatricula(matricula);
 		aluno.setNome(nome);
