@@ -57,7 +57,7 @@ public class Aluno {
     }
    
     public String toString() {
-        return "Aluno [id=" + id + ", cpf=" + cpf + ", matricula=" + matricula + ", nome=" + nome + ", email=" + email
-                + ", telefone=" + telefone + "]";
+        return "Aluno [id: " + id + ", cpf: " + cpf + ", matricula: " + matricula + ", nome: " + nome + ", email: " + email
+                + ", telefone: " + telefone + "]";
     }
 }
