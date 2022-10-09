@@ -8,15 +8,6 @@ public class Aluno {
     private String email;
     private String telefone;
 
-    public Aluno(int id, String cpf, String matricula, String nome, String email, String telefone) {
-        this.id = id;
-        this.cpf = cpf;
-        this.matricula = matricula;
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -60,7 +51,7 @@ public class Aluno {
     public String getEmail() {
         return email;
     }
-    
+
     public String getTelefone() {
         return telefone;
     }
