@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 import com.lista_07.entidade.Aluno;
 
 public class AlunoJDBCDAO implements AlunoDAO {
@@ -16,10 +14,10 @@ public class AlunoJDBCDAO implements AlunoDAO {
     public void salvar(Aluno aluno) {
         Connection connection = null;
         try {
+            PreparedStatement pst;
             connection = ConnectionFactory.getConnection();
             String insert_sql = "insert into Alunos (id, cpf, matricula, nome, email, telefone)" + 
-                            "values (?, ?, ?, ?, ?, ?)";
-            PreparedStatement pst;
+                                "values (?, ?, ?, ?, ?, ?)";
             pst = connection.prepareStatement(insert_sql);
             pst.setInt(1, aluno.getId());
             pst.setString(2, aluno.getCpf());
@@ -46,41 +44,47 @@ public class AlunoJDBCDAO implements AlunoDAO {
         PreparedStatement pst;
         try {
             connection = ConnectionFactory.getConnection();
-            if (opcao == 1) {
-                String cpf = JOptionPane.showInputDialog("CPF:");
-                update_sql = "update Alunos set cpf = ? where id = ?";
-                pst = connection.prepareStatement(update_sql);
-                pst.setString(1, cpf);
-                pst.setInt(2, aluno.getId());
-                pst.executeUpdate();
-            } else if (opcao == 2) {
-                String matricula = JOptionPane.showInputDialog("MATRICULA:");
-                update_sql = "update Alunos set matricula = ?  where id = ?";
-                pst = connection.prepareStatement(update_sql);
-                pst.setString(1, matricula);
-                pst.setInt(2, aluno.getId());
-                pst.executeUpdate();
-            } else if (opcao == 3) {
-                String nome = JOptionPane.showInputDialog("NOME:");
-                update_sql = "update Alunos set nome = ?  where id = ?";
-                pst = connection.prepareStatement(update_sql);
-                pst.setString(1, nome);
-                pst.setInt(2, aluno.getId());
-                pst.executeUpdate();
-            } else if (opcao == 4) {
-                String email = JOptionPane.showInputDialog("EMAIL:");
-                update_sql = "update Alunos set email = ?  where id = ?";
-                pst = connection.prepareStatement(update_sql);
-                pst.setString(1, email);
-                pst.setInt(2, aluno.getId());
-                pst.executeUpdate();
-            } else if (opcao == 5) {
-                String telefone = JOptionPane.showInputDialog("TELEFONE:");
-                update_sql = "update Alunos set telefone = ?  where id = ?";
-                pst = connection.prepareStatement(update_sql);
-                pst.setString(1, telefone);
-                pst.setInt(2, aluno.getId());
-                pst.executeUpdate();
+            switch(opcao) {
+                case '1':
+                    String cpf = JOptionPane.showInputDialog("CPF:");
+                    update_sql = "update Alunos set cpf = ? where id = ?";
+                    pst = connection.prepareStatement(update_sql);
+                    pst.setString(1, cpf);
+                    pst.setInt(2, aluno.getId());
+                    pst.executeUpdate();
+                    break;
+                case '2':
+                    String matricula = JOptionPane.showInputDialog("MATRICULA:");
+                    update_sql = "update Alunos set matricula = ?  where id = ?";
+                    pst = connection.prepareStatement(update_sql);
+                    pst.setString(1, matricula);
+                    pst.setInt(2, aluno.getId());
+                    pst.executeUpdate();
+                    break;
+                case '3':
+                    String nome = JOptionPane.showInputDialog("NOME:");
+                    update_sql = "update Alunos set nome = ?  where id = ?";
+                    pst = connection.prepareStatement(update_sql);
+                    pst.setString(1, nome);
+                    pst.setInt(2, aluno.getId());
+                    pst.executeUpdate();
+                    break;
+                case '4':
+                    String email = JOptionPane.showInputDialog("EMAIL:");
+                    update_sql = "update Alunos set email = ?  where id = ?";
+                    pst = connection.prepareStatement(update_sql);
+                    pst.setString(1, email);
+                    pst.setInt(2, aluno.getId());
+                    pst.executeUpdate();
+                    break;
+                case '5':
+                    String telefone = JOptionPane.showInputDialog("TELEFONE:");
+                    update_sql = "update Alunos set telefone = ?  where id = ?";
+                    pst = connection.prepareStatement(update_sql);
+                    pst.setString(1, telefone);
+                    pst.setInt(2, aluno.getId());
+                    pst.executeUpdate();
+                    break;
             }
         } catch (SQLException e) {
             throw new DAOException("Ocorreu um problema durante a operação.", e);
@@ -102,7 +106,6 @@ public class AlunoJDBCDAO implements AlunoDAO {
             PreparedStatement pst = connection.prepareStatement(delete_sql);
             pst.setInt(1, id);
 			pst.executeUpdate();
-
         } catch (SQLException e) {
             throw new DAOException("Ocorreu um problema durante a operação.", e);
         } finally {
@@ -135,9 +138,8 @@ public class AlunoJDBCDAO implements AlunoDAO {
             PreparedStatement pst = connection.prepareStatement(find_sql);
             pst.setInt(1, id);
             ResultSet result = pst.executeQuery();
-            if (result.next()) {
+            if (result.next())
 				aluno = map(result);
-			}
         } catch (SQLException e) {
             throw new DAOException("Ocorreu um problema durante a operação.", e);
         } finally {
@@ -147,7 +149,6 @@ public class AlunoJDBCDAO implements AlunoDAO {
             } catch (SQLException e) {
                 throw new DAOException("Não foi possivel fechar a conexão.", e);
             }
-        }
-        return aluno;
+        } return aluno;
     }
 }
