@@ -36,13 +36,12 @@ public class Menu {
 					  "3 - Remover \n" + 
 					  "4 - Consultar \n" + 
 					  "5 - Sair";
-            char selecao;
-
+        char selecao;
             do {
                 Aluno aluno;
                 String id;
                 selecao = JOptionPane.showInputDialog(menu).charAt(0);
-    
+
                 switch(selecao) {
                     // Inserir 
                     case '1':
@@ -59,11 +58,9 @@ public class Menu {
                                        "3 - nome:\n" + 
                                        "4 - email:\n" + 
                                        "5 - telefone:"; 
-                        int escolha = JOptionPane.showInputDialog(opcao).charAt(0);
+                        String escolha = JOptionPane.showInputDialog(opcao);
                         aluno = baseAlunoDAO.consultar(Integer.parseInt(id));
-                        
-                        buscarAluno(aluno);
-                        baseAlunoDAO.alterar(aluno, Integer.parseInt(id), escolha);
+                        baseAlunoDAO.alterar(aluno, Integer.parseInt(id), Integer.parseInt(escolha));
                         break;
                     // Remover 
                     case '3':

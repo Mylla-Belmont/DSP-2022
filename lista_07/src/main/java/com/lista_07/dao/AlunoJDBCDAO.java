@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import com.lista_07.entidade.Aluno;
 
 public class AlunoJDBCDAO implements AlunoDAO {
@@ -45,33 +47,38 @@ public class AlunoJDBCDAO implements AlunoDAO {
         try {
             connection = ConnectionFactory.getConnection();
             if (opcao == 1) {
+                String cpf = JOptionPane.showInputDialog("CPF:");
                 update_sql = "update Alunos set cpf = ? where id = ?";
                 pst = connection.prepareStatement(update_sql);
-                pst.setString(1, aluno.getCpf());
+                pst.setString(1, cpf);
                 pst.setInt(2, aluno.getId());
                 pst.executeUpdate();
             } else if (opcao == 2) {
+                String matricula = JOptionPane.showInputDialog("MATRICULA:");
                 update_sql = "update Alunos set matricula = ?  where id = ?";
                 pst = connection.prepareStatement(update_sql);
-                pst.setString(1, aluno.getMatricula());
+                pst.setString(1, matricula);
                 pst.setInt(2, aluno.getId());
                 pst.executeUpdate();
             } else if (opcao == 3) {
+                String nome = JOptionPane.showInputDialog("NOME:");
                 update_sql = "update Alunos set nome = ?  where id = ?";
                 pst = connection.prepareStatement(update_sql);
-                pst.setString(1, aluno.getNome());
+                pst.setString(1, nome);
                 pst.setInt(2, aluno.getId());
                 pst.executeUpdate();
             } else if (opcao == 4) {
+                String email = JOptionPane.showInputDialog("EMAIL:");
                 update_sql = "update Alunos set email = ?  where id = ?";
                 pst = connection.prepareStatement(update_sql);
-                pst.setString(1, aluno.getEmail());
+                pst.setString(1, email);
                 pst.setInt(2, aluno.getId());
                 pst.executeUpdate();
             } else if (opcao == 5) {
+                String telefone = JOptionPane.showInputDialog("TELEFONE:");
                 update_sql = "update Alunos set telefone = ?  where id = ?";
                 pst = connection.prepareStatement(update_sql);
-                pst.setString(1, aluno.getTelefone());
+                pst.setString(1, telefone);
                 pst.setInt(2, aluno.getId());
                 pst.executeUpdate();
             }
