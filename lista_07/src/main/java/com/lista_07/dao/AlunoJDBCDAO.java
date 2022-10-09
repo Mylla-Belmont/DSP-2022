@@ -15,10 +15,10 @@ public class AlunoJDBCDAO implements AlunoDAO {
         Connection connection = null;
         try {
             connection = ConnectionFactory.getConnection();
-            String insert_sql = "insert into Alunos (id, cpf, matricula, nome, email, telefone)" + 
-                            "values (?, ?, ?, ?, ?, ?)";
+            String insert_sql = "insert into Alunos (cpf, matricula, nome, email, telefone)" + 
+                            "values (?, ?, ?, ?, ?)";
             String update_sql = "update Alunos set cpf = ?, matricula = ?, nome = ?" + 
-                                "email = ?, telefone = ?";
+                                "email = ?, telefone = ? where id = ?";
             PreparedStatement pst;
             if (aluno.getId() == 0) {
                 pst = connection.prepareStatement(insert_sql);
@@ -83,7 +83,7 @@ public class AlunoJDBCDAO implements AlunoDAO {
         try {
             connection = ConnectionFactory.getConnection();
             String find_sql = "select id, cpf, matricula, nome, email, telefone" +
-                              "from Alunos where id = :id_";
+                              "from Alunos where id = ?";
             PreparedStatement pst = connection.prepareStatement(find_sql);
             pst.setInt(1, id);
             ResultSet result = pst.executeQuery();
