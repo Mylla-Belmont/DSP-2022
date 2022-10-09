@@ -9,4 +9,6 @@ public interface AlunoDAO {
     public void deletar(int id);
 
     public Aluno consultar(int id);
+
+    public void alterar(Aluno aluno, int id, int opcao);
 }

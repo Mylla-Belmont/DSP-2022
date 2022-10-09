@@ -15,24 +15,66 @@ public class AlunoJDBCDAO implements AlunoDAO {
         Connection connection = null;
         try {
             connection = ConnectionFactory.getConnection();
-            String insert_sql = "insert into Alunos (cpf, matricula, nome, email, telefone)" + 
-                            "values (?, ?, ?, ?, ?)";
-            String update_sql = "update Alunos set cpf = ?, matricula = ?, nome = ?" + 
-                                "email = ?, telefone = ? where id = ?";
+            String insert_sql = "insert into Alunos (id, cpf, matricula, nome, email, telefone)" + 
+                            "values (?, ?, ?, ?, ?, ?)";
             PreparedStatement pst;
-            if (aluno.getId() == 0) {
-                pst = connection.prepareStatement(insert_sql);
-            } else {
-                pst = connection.prepareStatement(update_sql);
-                pst.setInt(6, aluno.getId());
-            }
-            pst.setString(1, aluno.getCpf());
-            pst.setString(2, aluno.getMatricula());
-            pst.setString(3, aluno.getNome());
-            pst.setString(4, aluno.getEmail());
-            pst.setString(5, aluno.getTelefone());
+            pst = connection.prepareStatement(insert_sql);
+            pst.setInt(1, aluno.getId());
+            pst.setString(2, aluno.getCpf());
+            pst.setString(3, aluno.getMatricula());
+            pst.setString(4, aluno.getNome());
+            pst.setString(5, aluno.getEmail());
+            pst.setString(6, aluno.getTelefone());
             pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Ocorreu um problema durante a operação.", e);
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                throw new DAOException("Não foi possivel fechar a conexão.", e);
+            }
+        }
+    }
 
+    public void alterar(Aluno aluno, int id, int opcao) {
+        Connection connection = null;
+        String update_sql;
+        PreparedStatement pst;
+        try {
+            connection = ConnectionFactory.getConnection();
+            if (opcao == 1) {
+                update_sql = "update Alunos set cpf = ? where id = ?";
+                pst = connection.prepareStatement(update_sql);
+                pst.setString(1, aluno.getCpf());
+                pst.setInt(2, aluno.getId());
+                pst.executeUpdate();
+            } else if (opcao == 2) {
+                update_sql = "update Alunos set matricula = ?  where id = ?";
+                pst = connection.prepareStatement(update_sql);
+                pst.setString(1, aluno.getMatricula());
+                pst.setInt(2, aluno.getId());
+                pst.executeUpdate();
+            } else if (opcao == 3) {
+                update_sql = "update Alunos set nome = ?  where id = ?";
+                pst = connection.prepareStatement(update_sql);
+                pst.setString(1, aluno.getNome());
+                pst.setInt(2, aluno.getId());
+                pst.executeUpdate();
+            } else if (opcao == 4) {
+                update_sql = "update Alunos set email = ?  where id = ?";
+                pst = connection.prepareStatement(update_sql);
+                pst.setString(1, aluno.getEmail());
+                pst.setInt(2, aluno.getId());
+                pst.executeUpdate();
+            } else if (opcao == 5) {
+                update_sql = "update Alunos set telefone = ?  where id = ?";
+                pst = connection.prepareStatement(update_sql);
+                pst.setString(1, aluno.getTelefone());
+                pst.setInt(2, aluno.getId());
+                pst.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new DAOException("Ocorreu um problema durante a operação.", e);
         } finally {
@@ -82,8 +124,7 @@ public class AlunoJDBCDAO implements AlunoDAO {
         Aluno aluno = null;
         try {
             connection = ConnectionFactory.getConnection();
-            String find_sql = "select id, cpf, matricula, nome, email, telefone" +
-                              "from Alunos where id = ?";
+            String find_sql = "select * from Alunos where id = ?";
             PreparedStatement pst = connection.prepareStatement(find_sql);
             pst.setInt(1, id);
             ResultSet result = pst.executeQuery();
@@ -101,5 +142,5 @@ public class AlunoJDBCDAO implements AlunoDAO {
             }
         }
         return aluno;
-    }    
+    }
 }

@@ -27,7 +27,7 @@ public class Menu {
     private static void listaAluno(Aluno aluno) {
 		JOptionPane.showMessageDialog(null, aluno == null ? "Aluno não  encontrado" : aluno);
 	}
-    
+
     public static void main( String[] args ) {
         AlunoDAO baseAlunoDAO = new AlunoJDBCDAO();
         String menu = "Escolha uma opção: \n" +
@@ -53,9 +53,17 @@ public class Menu {
                     // Atualizar
                     case '2':
                         id = JOptionPane.showInputDialog("Digite o id do aluno para alterar:");
+                        String opcao = "Digite o que deseja alterar:\n" + 
+                                       "1 - cpf:\n" + 
+                                       "2 - matricula:\n" + 
+                                       "3 - nome:\n" + 
+                                       "4 - email:\n" + 
+                                       "5 - telefone:"; 
+                        int escolha = JOptionPane.showInputDialog(opcao).charAt(0);
                         aluno = baseAlunoDAO.consultar(Integer.parseInt(id));
+                        
                         buscarAluno(aluno);
-                        baseAlunoDAO.salvar(aluno);
+                        baseAlunoDAO.alterar(aluno, Integer.parseInt(id), escolha);
                         break;
                     // Remover 
                     case '3':
