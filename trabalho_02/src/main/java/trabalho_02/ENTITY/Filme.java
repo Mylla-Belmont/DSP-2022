@@ -1,56 +1,68 @@
-package trabalho_02.ENTITY;
+package trabalho_02.entity;
 
-import java.time.LocalDateTime;
+import java.util.Set;
 import javax.persistence.*;
 
-//NamedQuery
+//Named Query
 
 @Entity
-@Table(name = "filmes")
+@Table(name = "filme")
 public class Filme {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+    @ManyToMany
+    Set<Filme> atores_filme;
+
     private int id;
-    private String nome;
-    private LocalDateTime dataNascimento;
+    private String titulo;
+    private int anoLancamento;
 
     public Filme() {}
 
-    public Filme(int id, String nome, LocalDateTime dataNascimento) {
+    public Filme(Set<Filme> atores_filme, int id, String titulo, int anoLancamento) {
+        this.atores_filme = atores_filme;
         this.id = id;
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
+        this.titulo = titulo;
+        this.anoLancamento = anoLancamento;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setAnoLancamento(int anoLancamento) {
+        this.anoLancamento = anoLancamento;
+    }
+
+    public void setAtores(Set<Filme> atores_filme) {
+        this.atores_filme = atores_filme;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public LocalDateTime getDataNascimento() {
-        return dataNascimento;
+    public int getAnoLancamento() {
+        return anoLancamento;
+    }
+
+    public Set<Filme> getAtores() {
+        return atores_filme;
     }
 
     public String toString() {
-        return  "Filme [id=" + id + 
-                ", nome=" + nome + 
-                ", dataNascimento=" + dataNascimento + "]";
+        return "Ator [atores_filme=" + atores_filme + 
+                ", id=" + id + 
+                ", titulo=" + titulo + 
+                ", anoLancamento=" + anoLancamento + "]";
     }
-
-    
 }

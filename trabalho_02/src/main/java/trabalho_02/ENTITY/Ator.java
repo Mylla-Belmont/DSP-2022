@@ -1,53 +1,69 @@
-package trabalho_02.ENTITY;
+package trabalho_02.entity;
 
+import java.time.LocalDateTime;
+import java.util.Set;
 import javax.persistence.*;
 
-//Named Query
+//@NamedQuery(name="Ator.findById", query="select x from Ator as x where x.id like :id");
 
 @Entity
-@Table(name = "atores")
+@Table(name = "Ator")
 public class Ator {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private String titulo;
-    private int anoLancamento;
+
+    @ManyToMany
+    Set<Ator> filme_ator;
+
+    private String nome;
+    private LocalDateTime dataNascimento;
 
     public Ator() {}
 
-    public Ator(int id, String titulo, int anoLancamento) {
+    public Ator(int id, Set<Ator> filme_ator, String nome, LocalDateTime dataNascimento) {
         this.id = id;
-        this.titulo = titulo;
-        this.anoLancamento = anoLancamento;
+        this.filme_ator = filme_ator;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setAnoLancamento(int anoLancamento) {
-        this.anoLancamento = anoLancamento;
+    public void setDataNascimento(LocalDateTime dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public void setfilme_ator(Set<Ator> filme_ator) {
+        this.filme_ator = filme_ator;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNome() {
+        return nome;
     }
 
-    public int getAnoLancamento() {
-        return anoLancamento;
+    public LocalDateTime getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public Set<Ator> getfilme_ator() {
+        return filme_ator;
     }
 
     public String toString() {
-        return  "Ator [id=" + id + 
-                ", titulo=" + titulo + 
-                ", anoLancamento=" + anoLancamento + "]";
+        return "Ator [id=" + id + 
+                ", filme_ator=" + filme_ator + 
+                ", nome=" + nome + 
+                ", dataNascimento=" + dataNascimento + "]";
     }
 }

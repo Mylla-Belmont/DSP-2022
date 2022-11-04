@@ -1,4 +1,4 @@
-package trabalho_02.UTIL;
+package trabalho_02.util;
 
 import javax.persistence.*;
 
