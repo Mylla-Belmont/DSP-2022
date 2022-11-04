@@ -8,16 +8,16 @@ import javax.persistence.EntityManager;
 public class FilmeJPADAOquery implements FilmeDAO {
 
     // JPQL
-    public Object findById(int id) {
+    public void findById(int id) {
         EntityManager em = JPAUtil.getEntityManager();
         List<Filme> moviesById = em.createQuery("from Filme", Filme.class)
                     .setParameter("id", id + "%")
                     .getResultList();
         for (Filme filme : moviesById) {
             System.out.println("Id: " + filme.getId());
-            System.out.println("Id: " + filme.getId());
+            System.out.println("Titulo: " + filme.getTitulo());
+            System.out.println("Ano de Lançamento: " + filme.getAnoLancamento());
         }
-        return null;
     }
 
     public List<Filme> listByActor(String ator) {
