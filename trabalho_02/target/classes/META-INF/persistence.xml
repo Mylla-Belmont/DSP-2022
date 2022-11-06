@@ -8,13 +8,13 @@
 <persistence-unit name="dev" transaction-type="RESOURCE_LOCAL">
 <properties>
     <property name="javax.persistence.jdbc.url"
-              value="jdbc:postgresql://localhost/dspersist2021" />
+              value="jdbc:postgresql://localhost/postgres" />
     <property name="javax.persistence.jdbc.driver"
               value="org.postgresql.Driver" />
     <property name="javax.persistence.jdbc.user"
               value="postgres" />
     <property name="javax.persistence.jdbc.password"
-              value="postgres" />
+              value="creepypasta" />
 
     <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect" />
     <property name="hibernate.hbm2ddl.auto" value="update" />
