@@ -3,7 +3,10 @@ package trabalho_02.entity;
 import java.util.Set;
 import javax.persistence.*;
 
-//Named Query
+@NamedQueries({
+    @NamedQuery(name="Filme.findById", query="select * from Filme where id = :id"),
+    @NamedQuery(name="Filme.findByString", query ="select * from Filme where titulo like :stg"),
+})
 
 @Entity
 @Table(name = "filme")

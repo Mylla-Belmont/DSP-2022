@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
 
-//@NamedQuery(name="Ator.findById", query="select x from Ator as x where x.id like :id");
+@NamedQueries({
+    @NamedQuery(name="Ator.findMoviesByActor", query = "select A.nome, F.titulo from Ator A, Filme F where titulo = :titulo"),
+    @NamedQuery(name="Ator.findActorsByYear", query = "select nome, dataNascimento from Ator where dataNascimento = :ano")
+})
 
 @Entity
 @Table(name = "Ator")
