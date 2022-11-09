@@ -3,7 +3,7 @@ package trabalho_02.util;
 import javax.persistence.*;
 
 public class JPAUtil {
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("BancoDev");
     private static ThreadLocal<EntityManager> ems = new ThreadLocal<EntityManager>();
 
     public static EntityManager getEntityManager() {

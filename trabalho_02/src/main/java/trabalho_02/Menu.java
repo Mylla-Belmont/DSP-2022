@@ -8,8 +8,8 @@ import trabalho_02.dao.FilmeJPADAOquery;
 
 public class Menu {
     public static void main( String[] args ) {
-        //FilmeDAO baseFilmeDAO = new FilmeJPADAOquery();
-        AtorDAO  baseAtorDAO = new AtorJPADAOquery();
+        FilmeDAO baseFilmeDAO = new FilmeJPADAOquery();
+        //AtorDAO baseAtorDAO = new AtorJPADAOquery();
 
         char selection;
         String menu = "Escolha uma opção: \n" +
@@ -27,12 +27,16 @@ public class Menu {
             selection = JOptionPane.showInputDialog(menu).charAt(0);
             switch (selection) {
                 case '1':
-                    String id_ator = JOptionPane.showInputDialog("Digite o ID do ator"); 
-                    baseAtorDAO.findById(Integer.parseInt(id_ator));
+                    //String id_ator = JOptionPane.showInputDialog("Digite o ID do ator"); 
+                    //baseAtorDAO.findById(Integer.parseInt(id_ator));
                     break;
                 case '2':
                     break;
-
+                case '3':
+                    String nome_ator = JOptionPane.showInputDialog("Digite o nome do ator");
+                    baseFilmeDAO.listByActor(nome_ator);
+                    break;
+                
                 case '9':
                     break;
 

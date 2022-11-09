@@ -9,16 +9,17 @@ public class AtorJPADAOquery implements AtorDAO {
     // JPQL
     public void findById(int id) {
         EntityManager em = JPAUtil.getEntityManager();
-        List<Ator> moviesById = em.createQuery("from Ator", Ator.class)
-                    .setParameter("id", id + "%")
-                    .getResultList();
-        for (Ator ator : moviesById) {
-            System.out.println("Id: " + ator.getId());
-            System.out.println("Nome: " + ator.getNome());
-            System.out.println("Ano de Nascimento: " + ator.getDataNascimento());
-            System.out.println("Filmes: " + ator.getfilme_ator());
-        }
-        JPAUtil.closeEntityManager();
+        System.out.println("###############################");
+        // List<Ator> moviesById = em.createQuery("from Ator", Ator.class)
+        //             .setParameter("id", id + "%")
+        //             .getResultList();
+        // for (Ator ator : moviesById) {
+        //     System.out.println("Id: " + ator.getId());
+        //     System.out.println("Nome: " + ator.getNome());
+        //     System.out.println("Ano de Nascimento: " + ator.getDataNascimento());
+        //     System.out.println("Filmes: " + ator.getfilme_ator());
+        // }
+        // JPAUtil.closeEntityManager();
     }
 
     // Named Query
