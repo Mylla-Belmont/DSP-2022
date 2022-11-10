@@ -20,18 +20,6 @@ public class CRUDfilmes implements CommandLineRunner {
         filme.setAnoLancamento(anoLancamento);
     }
 
-    // public static void lista_Filmes(List<Filme> filmes) {
-    //     StringBuilder listagem = new StringBuilder();
-    //     for (Filme filme : filmes) {
-    //         listagem.append(filme).append("\n");
-    //     }
-    //     JOptionPane.showMessageDialog(null, listagem.length() == 0 ? "Nenhum filme encontrado" : listagem);
-    // }
-
-    // public static void listaFilme(Filme filme) {
-    //     JOptionPane.showMessageDialog(null, filme);
-    // }
-
     public void run(String... args) throws Exception {
         char selection;
         String menu = "Escolha uma opção: \n" +
