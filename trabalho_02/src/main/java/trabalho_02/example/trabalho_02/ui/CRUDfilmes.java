@@ -1,41 +1,37 @@
 package trabalho_02.example.trabalho_02.ui;
 
 import java.util.List;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.springframework.boot.CommandLineRunner;
-import trabalho_02.example.trabalho_02.entity.Ator;
 import trabalho_02.example.trabalho_02.entity.Filme;
-import trabalho_02.example.trabalho_02.dao.AtorDAO;
 import trabalho_02.example.trabalho_02.dao.FilmeDAO;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @ComponentScan("trabalho_02.example.trabalho_02")
 public class CRUDfilmes implements CommandLineRunner {
     @Autowired
     private FilmeDAO baseFilme;
-    private AtorDAO baseAtor;
-    
-    public static void obterFilmes(Filme filme, AtorDAO baseAtor) {
+    private static int contIdFilmes = 0;
+   
+    public static void obterFilmes(Filme filme) {
         String titulo = JOptionPane.showInputDialog("Titulo", filme.getTitulo());
         String anoLancamento = JOptionPane.showInputDialog("Ano de lançamento", filme.getAnoLancamento());
-    
+        filme.setId(contIdFilmes++);
         filme.setTitulo(titulo);
         filme.setAnoLancamento(anoLancamento);
     }
 
-    public static void listaFilme(Filme filme) {
-        JOptionPane.showMessageDialog(null, filme == null ? "Nenhum cliente encontrado" : filme);
-    }
-
-    public static void listaFilmes(List<Filme> filmes) {
+    public static void lista_Filmes(List<Filme> filmes) {
         StringBuilder listagem = new StringBuilder();
         for (Filme filme : filmes) {
             listagem.append(filme).append("\n");
         }
         JOptionPane.showMessageDialog(null, listagem.length() == 0 ? "Nenhum filme encontrado" : listagem);
+    }
+
+    public static void listaFilme(Filme filme) {
+        JOptionPane.showMessageDialog(null, filme);
     }
 
     public void run(String... args) throws Exception {
@@ -49,39 +45,39 @@ public class CRUDfilmes implements CommandLineRunner {
                         "6 - Sair \n";
         do {
             Filme filme;
-            String id_filmes;
+            int id_filmes;
             selection = JOptionPane.showInputDialog(menu).charAt(0);
+
             switch (selection) {
-                case '1':   // SALVAR
+                case '1':   // SALVAR   -ok
                     filme = new Filme();
-                    obterFilmes(filme, baseAtor);
+                    obterFilmes(filme);
                     baseFilme.save(filme);
                     break;
 
-                case '2':   // ATUALIZAR POR ID
-                    id_filmes = JOptionPane.showInputDialog("Digite o ID do filme");
-                    filme = baseFilme.findById(Integer.parseInt(id_filmes));
-                    // obterFilmes(filme);
-                    baseFilme.save(filme);
+                case '2':   // ATUALIZAR POR ID -ok
+                    id_filmes = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do filme:"));
+                    filme = baseFilme.findById(id_filmes);
+                    if(filme != null) {
+                        obterFilmes(filme);
+                        baseFilme.save(filme);
+                    }else 
+                        JOptionPane.showMessageDialog(null, "Id inválido!");
                     break;
 
-                case '3':  // DELETAR POR ID
-                    id_filmes = JOptionPane.showInputDialog("Digite o ID do filme");
-                    filme = baseFilme.findById(Integer.parseInt(id_filmes));
+                case '3':  // DELETAR POR ID    -ok
+                    id_filmes = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do filme:"));
+                    filme = baseFilme.findById(id_filmes);
                     if(filme != null) {
                         baseFilme.deleteById(filme.getId());
                     } else 
-                        JOptionPane.showMessageDialog(null, "Não foi possível remover, pois o cliente não encontrado.");
+                        JOptionPane.showMessageDialog(null, "Id inválido!");
                     break;
 
                 case '4':  // CONSULTAR POR ID
-                    id_filmes = JOptionPane.showInputDialog("Digite o ID do filme");
-                    filme = baseFilme.findById(Integer.parseInt(id_filmes));
-                    listaFilme(filme);
                     break;
 
                 case '5':  // LISTA TODOS OS FILMES
-                    listaFilmes(baseFilme.findAll());
                     break;
 
                 case '6':
