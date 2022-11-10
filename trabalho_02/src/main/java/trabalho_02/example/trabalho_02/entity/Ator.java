@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Ator {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter @Setter private int id_ator;
+	@Getter @Setter private int id;
 	
 	@NonNull @Getter @Setter private String nome;
 	@Getter @Setter private LocalDateTime dataNascimento;

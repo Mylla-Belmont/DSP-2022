@@ -1,35 +1,29 @@
 package trabalho_02.example.trabalho_02.ui;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.springframework.boot.CommandLineRunner;
 import trabalho_02.example.trabalho_02.entity.Ator;
 import trabalho_02.example.trabalho_02.entity.Filme;
+import trabalho_02.example.trabalho_02.dao.AtorDAO;
 import trabalho_02.example.trabalho_02.dao.FilmeDAO;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @ComponentScan("trabalho_02.example.trabalho_02")
 public class CRUDfilmes implements CommandLineRunner {
-
+    @Autowired
     private FilmeDAO baseFilme;
+    private AtorDAO baseAtor;
     
-    public static void obterFilmes(Filme filme) {
+    public static void obterFilmes(Filme filme, AtorDAO baseAtor) {
         String titulo = JOptionPane.showInputDialog("Titulo", filme.getTitulo());
         String anoLancamento = JOptionPane.showInputDialog("Ano de lançamento", filme.getAnoLancamento());
-        
-        String nome;
-        List<Ator> atores = new ArrayList<>();
-        do {
-            nome = JOptionPane.showInputDialog("Insira os atores: \n" + "# - Sair");
-            if(!nome.equals("#")){
-                atores.add(new Ator(0, nome, null, null));
-            }else { break; }
-        } while (true);
-
+    
         filme.setTitulo(titulo);
         filme.setAnoLancamento(anoLancamento);
-        filme.setAtores(atores);
     }
 
     public static void listaFilme(Filme filme) {
@@ -60,14 +54,14 @@ public class CRUDfilmes implements CommandLineRunner {
             switch (selection) {
                 case '1':   // SALVAR
                     filme = new Filme();
-                    obterFilmes(filme);
+                    obterFilmes(filme, baseAtor);
                     baseFilme.save(filme);
                     break;
 
                 case '2':   // ATUALIZAR POR ID
                     id_filmes = JOptionPane.showInputDialog("Digite o ID do filme");
                     filme = baseFilme.findById(Integer.parseInt(id_filmes));
-                    obterFilmes(filme);
+                    // obterFilmes(filme);
                     baseFilme.save(filme);
                     break;
 
@@ -75,10 +69,10 @@ public class CRUDfilmes implements CommandLineRunner {
                     id_filmes = JOptionPane.showInputDialog("Digite o ID do filme");
                     filme = baseFilme.findById(Integer.parseInt(id_filmes));
                     if(filme != null) {
-                        baseFilme.deleteById(filme.getId_filme());
-                    } else {
+                        baseFilme.deleteById(filme.getId());
+                    } else 
                         JOptionPane.showMessageDialog(null, "Não foi possível remover, pois o cliente não encontrado.");
-                    } break;
+                    break;
 
                 case '4':  // CONSULTAR POR ID
                     id_filmes = JOptionPane.showInputDialog("Digite o ID do filme");
@@ -88,6 +82,7 @@ public class CRUDfilmes implements CommandLineRunner {
 
                 case '5':  // LISTA TODOS OS FILMES
                     listaFilmes(baseFilme.findAll());
+                    break;
 
                 case '6':
                     break;

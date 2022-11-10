@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Filme {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter @Setter private int id_filme;
+	@Getter @Setter private int id;
 
     @NonNull @Getter @Setter private String titulo;
 	@Getter @Setter private String anoLancamento;
@@ -24,4 +24,9 @@ public class Filme {
         joinColumns = @JoinColumn(name = "id_filme"),
         inverseJoinColumns = @JoinColumn(name = "id_ator"))
 	@Getter @Setter private List<Ator> atores;
+
+    public void addAtores (Ator atores) {
+        this.atores.add(atores);
+        atores.getFilmes().add(this);
+    }
 }
