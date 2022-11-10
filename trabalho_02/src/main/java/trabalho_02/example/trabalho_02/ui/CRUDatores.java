@@ -17,6 +17,7 @@ public class CRUDatores implements CommandLineRunner {
         String dataNascimento = JOptionPane.showInputDialog("Data de nascimento", ator.getDataNascimento());
         ator.setNome(nome);
         ator.setDataNascimento(dataNascimento);
+        ator.setFilmes(null);
     }
 
     public void run(String... args) throws Exception {
@@ -62,7 +63,7 @@ public class CRUDatores implements CommandLineRunner {
                 case '4':
                     break;
                     
-                case '5':
+                case '5':   // EXIBIR TODOS
                     break;
                     
                 case '6':
