@@ -1,6 +1,6 @@
 package trabalho_02.example.trabalho_02.ui;
 
-import java.util.List;
+// import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.boot.CommandLineRunner;
 import trabalho_02.example.trabalho_02.entity.Filme;
@@ -12,27 +12,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CRUDfilmes implements CommandLineRunner {
     @Autowired
     private FilmeDAO baseFilme;
-    private static int contIdFilmes = 0;
-   
+    
     public static void obterFilmes(Filme filme) {
         String titulo = JOptionPane.showInputDialog("Titulo", filme.getTitulo());
         String anoLancamento = JOptionPane.showInputDialog("Ano de lançamento", filme.getAnoLancamento());
-        filme.setId(contIdFilmes++);
         filme.setTitulo(titulo);
         filme.setAnoLancamento(anoLancamento);
     }
 
-    public static void lista_Filmes(List<Filme> filmes) {
-        StringBuilder listagem = new StringBuilder();
-        for (Filme filme : filmes) {
-            listagem.append(filme).append("\n");
-        }
-        JOptionPane.showMessageDialog(null, listagem.length() == 0 ? "Nenhum filme encontrado" : listagem);
-    }
+    // public static void lista_Filmes(List<Filme> filmes) {
+    //     StringBuilder listagem = new StringBuilder();
+    //     for (Filme filme : filmes) {
+    //         listagem.append(filme).append("\n");
+    //     }
+    //     JOptionPane.showMessageDialog(null, listagem.length() == 0 ? "Nenhum filme encontrado" : listagem);
+    // }
 
-    public static void listaFilme(Filme filme) {
-        JOptionPane.showMessageDialog(null, filme);
-    }
+    // public static void listaFilme(Filme filme) {
+    //     JOptionPane.showMessageDialog(null, filme);
+    // }
 
     public void run(String... args) throws Exception {
         char selection;
@@ -49,30 +47,30 @@ public class CRUDfilmes implements CommandLineRunner {
             selection = JOptionPane.showInputDialog(menu).charAt(0);
 
             switch (selection) {
-                case '1':   // SALVAR   -ok
+                case '1':   // SALVAR   
                     filme = new Filme();
                     obterFilmes(filme);
                     baseFilme.save(filme);
                     break;
 
-                case '2':   // ATUALIZAR POR ID -ok
+                case '2':   // ATUALIZAR POR ID
                     id_filmes = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do filme:"));
                     filme = baseFilme.findById(id_filmes);
                     if(filme != null) {
                         obterFilmes(filme);
                         baseFilme.save(filme);
-                    }else 
+                    }else {
                         JOptionPane.showMessageDialog(null, "Id inválido!");
-                    break;
+                    } break;
 
-                case '3':  // DELETAR POR ID    -ok
+                case '3':  // DELETAR POR ID   
                     id_filmes = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do filme:"));
                     filme = baseFilme.findById(id_filmes);
                     if(filme != null) {
                         baseFilme.deleteById(filme.getId());
-                    } else 
+                    } else {
                         JOptionPane.showMessageDialog(null, "Id inválido!");
-                    break;
+                    } break;
 
                 case '4':  // CONSULTAR POR ID
                     break;

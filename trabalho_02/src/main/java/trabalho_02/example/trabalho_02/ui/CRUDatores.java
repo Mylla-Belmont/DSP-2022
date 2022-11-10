@@ -12,8 +12,11 @@ public class CRUDatores implements CommandLineRunner {
     @Autowired
     private AtorDAO baseAtor;
 
-    public static void obterFilmes(Ator ator) {
-        
+    public static void obterAtor(Ator ator) {
+        String nome = JOptionPane.showInputDialog("Nome", ator.getNome());
+        String dataNascimento = JOptionPane.showInputDialog("Data de nascimento", ator.getDataNascimento());
+        ator.setNome(nome);
+        ator.setDataNascimento(dataNascimento);
     }
 
     public void run(String... args) throws Exception {
@@ -27,21 +30,34 @@ public class CRUDatores implements CommandLineRunner {
                         "6 - Sair \n";
         do {
             Ator ator;
-            String id_atores;
+            int id_atores;
             selection = JOptionPane.showInputDialog(menu).charAt(0);
 
             switch (selection) {
                 case '1':   // SALVAR
                     ator = new Ator();
-                    obterFilmes(ator);
+                    obterAtor(ator);
                     baseAtor.save(ator);
                     break;
 
-                case '2':
-                    break;
+                case '2':   // ATUALIZAR POR ID
+                    id_atores = Integer.parseInt(JOptionPane.showInputDialog("Digite o Id do ator:"));
+                    ator = baseAtor.findById(id_atores);
+                    if (ator != null) {
+                        obterAtor(ator);
+                        baseAtor.save(ator);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Id inválido!");
+                    } break;
 
-                case '3':
-                    break;
+                case '3':   // DELETAR POR ID
+                    id_atores = Integer.parseInt(JOptionPane.showInputDialog("Digite o Id do ator:"));
+                    ator = baseAtor.findById(id_atores);
+                    if (ator != null) {
+                        baseAtor.deleteById(ator.getId());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Id inválido!");
+                    } break;
                     
                 case '4':
                     break;
