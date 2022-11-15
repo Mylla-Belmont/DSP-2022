@@ -1,10 +1,8 @@
 package trabalho_02.example.trabalho_02.ui;
 
 import java.util.List;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import java.time.format.DateTimeFormatter;
 import org.springframework.boot.CommandLineRunner;
 import trabalho_02.example.trabalho_02.dao.AtorDAO;
 import trabalho_02.example.trabalho_02.entity.Ator;
@@ -18,12 +16,9 @@ public class CRUDatores implements CommandLineRunner {
 
     public static void obterAtor(Ator ator) {
         String nome = JOptionPane.showInputDialog("Nome", ator.getNome());
-        String data = JOptionPane.showInputDialog("Data de nascimento", ator.getDataNascimento());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-        LocalDate dataNascimento = LocalDate.parse(data, formatter);
+        String dataNascimento = JOptionPane.showInputDialog("Data de nascimento", ator.getAnoNascimento());
         ator.setNome(nome);
-        ator.setDataNascimento(dataNascimento);
-        ator.setFilmes(null);
+        ator.setAnoNascimento(dataNascimento);
     }
 
     public void run(String... args) throws Exception {
@@ -33,7 +28,7 @@ public class CRUDatores implements CommandLineRunner {
                         "2 - Atualizar Ator por id \n" +
                         "3 - Remover Ator por id \n" +
                         "4 - Exibir todos os Atores \n" +
-                        "5 - Exibir todos os Atores \n" +
+                        "5 - Exibir atores por ano de nascimento \n" +
                         "6 - Sair \n";
         do {
             Ator ator;
@@ -48,7 +43,7 @@ public class CRUDatores implements CommandLineRunner {
                     baseAtor.save(ator);
                 break;
 
-                case '2':   // ATUALIZAR POR ID
+                case '2':   // ATUALIZAR POR ID     - CORRIGIR
                     id_atores = Integer.parseInt(JOptionPane.showInputDialog("Digite o Id do ator:"));
                     ator = baseAtor.findById(id_atores);
                     if (ator != null) {
@@ -72,11 +67,16 @@ public class CRUDatores implements CommandLineRunner {
                 case '4':   // EXIBIR TODOS
                     atores = baseAtor.findAll();
                     for (Ator ator2 : atores) {
-                        JOptionPane.showMessageDialog(null, ator2.getNome() + ", " + ator2.getDataNascimento());
+                        JOptionPane.showMessageDialog(null, ator2.getNome() + "\n Nascido em: "+ ator2.getAnoNascimento());
                     }
                 break;
                     
-                case '5':
+                case '5':  // EXIBIR POR ANO DE NASCIMENTO
+                    String anoNascimento = JOptionPane.showInputDialog("Digite o ano de nascimento do ator:");
+                    atores = baseAtor.findByYear(anoNascimento);
+                    for (Ator ator2 : atores) {
+                        JOptionPane.showMessageDialog(null, ator2.getNome() + "\n Nascido em: "+ ator2.getAnoNascimento());
+                    }
                 break;
 
                 case '6':
