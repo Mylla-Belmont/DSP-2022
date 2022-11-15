@@ -23,9 +23,7 @@ public class CRUDfilmeAtores implements CommandLineRunner{
         char selection;
         String menu = "Escolha uma opção: \n" +
                         "1 - Inserir filmes em atores \n" +
-                        "2 - Deletar filmes em atores \n" +
-                        "3 - Listar filmes de um ator \n" +
-                        "3 - Sair \n";
+                        "2 - Sair \n";
         do {
             Ator ator;
             Filme filme;
@@ -43,31 +41,15 @@ public class CRUDfilmeAtores implements CommandLineRunner{
                     atores.add(ator);
                     filme.setAtores(atores);
                     baseFilme.save(filme);
-                    break;
+                break;
 
-                // case '2':   // DELETAR
-                //     // id_filme = Integer.parseInt(JOptionPane.showInputDialog("Digite o Id do filme:"));
-                //     // filme = baseFilme.findById(id_filme);
-                //     // id_ator = Integer.parseInt(JOptionPane.showInputDialog("Digite o Id do ator\n0 - Sair"));
-                //     // ator = baseAtor.findById(id_ator);
-                //     // filme.getAtores();
-                //     // filme.getAtores().remove(ator);
-                //     // baseFilme.save(filme);
-                //     break;
-                    
-                // // case '3':   // LISTAR FILMES DE UM ATOR
-                // //     String nome = JOptionPane.showInputDialog("Digite o nome do ator:");
-                // //     ator = baseAtor.findByName(nome);
-                // //     //baseFilme.listByActor(ator.getId());
-                // //     break;
-
-                // case '4':
-                //     break;
+                case '2':
+                break;
 
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida!");
             }
-        } while (selection != '3');
+        } while (selection != '2');
         
     }
 }
