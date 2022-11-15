@@ -14,6 +14,6 @@ public interface AtorDAO extends JpaRepository<Ator, Integer> {
     @Query("select a from Ator a where a.nome = :nome")
     public Ator findByName(String nome);
 
-    @Query("select a from Ator a where a.anoNascimento like :anoNascimento%")
+    @Query(value="select a from Ator a where a.anoNascimento like :anoNascimento%")
     public List<Ator> findByYear(String anoNascimento);
 }
