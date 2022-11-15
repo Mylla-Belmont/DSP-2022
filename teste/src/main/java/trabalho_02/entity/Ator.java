@@ -9,7 +9,7 @@ import javax.persistence.*;
     @NamedQuery(name="Ator.findActorsByYear", query = "select nome, dataNascimento from Ator where dataNascimento = :ano")
 })
 
-@Entity
+@Entity 
 @Table(name = "Ator")
 public class Ator {
     @Id

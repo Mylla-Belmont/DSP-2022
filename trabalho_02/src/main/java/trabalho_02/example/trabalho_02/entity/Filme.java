@@ -4,6 +4,8 @@ import lombok.*;
 import java.util.List;
 import javax.persistence.*;
 
+@NamedQuery(name="Filme.findByYear", query="select f from Filme f where f.anoLancamento = :anoLancamento")
+
 @Entity
 @Table(name = "filmes")
 @NoArgsConstructor

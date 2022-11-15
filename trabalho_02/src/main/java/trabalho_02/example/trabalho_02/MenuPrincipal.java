@@ -20,7 +20,7 @@ public class MenuPrincipal {
         String menu = "Escolha uma opção: \n" +
                         "1 - CRUD Filmes \n" +
                         "2 - CRUD Atores \n" +
-                        "3 - Inserir filme/ator \n" +
+                        "3 - CRUD filme/ator \n" +
                         "4 - sair \n";
 
 		do {
@@ -36,7 +36,7 @@ public class MenuPrincipal {
 					builderAtor.headless(false).run(args);
 					break;
 
-				case '3':  // INSERIR FILMES OU ATORES
+				case '3':  // CRUD FILMES OU ATORES
 					SpringApplicationBuilder builderFilmeAtores = new SpringApplicationBuilder(CRUDfilmeAtores.class);
 					builderFilmeAtores.headless(false).run(args);
 					break;

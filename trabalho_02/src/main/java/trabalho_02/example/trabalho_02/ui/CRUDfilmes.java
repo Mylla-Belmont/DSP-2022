@@ -1,6 +1,7 @@
 package trabalho_02.example.trabalho_02.ui;
 
-// import java.util.List;
+import java.util.List;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.springframework.boot.CommandLineRunner;
 import trabalho_02.example.trabalho_02.entity.Filme;
@@ -26,12 +27,14 @@ public class CRUDfilmes implements CommandLineRunner {
                         "1 - Inserir filme \n" +
                         "2 - Atualizar filme por id \n" +
                         "3 - Remover filme por id \n" +
-                        "4 - Exibir filme por id \n" +
-                        "5 - Exibir todos os filmes \n" +
-                        "6 - Sair \n";
+                        "4 - Exibir todos os filmes \n" +
+                        "5 - Listar filmes por ano \n" +
+                        "6 - Listar filmes por string \n" +
+                        "7 - Sair \n";
         do {
             Filme filme;
             int id_filmes;
+            List<Filme> filmes = new ArrayList<>();
             selection = JOptionPane.showInputDialog(menu).charAt(0);
 
             switch (selection) {
@@ -49,7 +52,8 @@ public class CRUDfilmes implements CommandLineRunner {
                         baseFilme.save(filme);
                     }else {
                         JOptionPane.showMessageDialog(null, "Id inválido!");
-                    } break;
+                    }
+                break;
 
                 case '3':  // DELETAR POR ID   
                     id_filmes = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do filme:"));
@@ -58,20 +62,38 @@ public class CRUDfilmes implements CommandLineRunner {
                         baseFilme.deleteById(filme.getId());
                     } else {
                         JOptionPane.showMessageDialog(null, "Id inválido!");
-                    } break;
+                    }
+                break;
 
-                case '4':  // CONSULTAR POR ID
-                    break;
+                case '4':  // EXIBIR TODOS
+                    filmes = baseFilme.findAll();
+                    for(Filme filme2 : filmes) {
+                        JOptionPane.showMessageDialog(null, filme2.getTitulo() + ", " + filme2.getAnoLancamento());
+                    } 
+                break;
 
-                case '5':  // LISTA TODOS OS FILMES
-                    break;
+                case '5':  // EXIBIR FILMES POR DETERMINADO ANO
+                    String anoLancamento = JOptionPane.showInputDialog("Digite o ano de lançamento do filme:");
+                    filmes = baseFilme.listByYear(anoLancamento);
+                    for (Filme filme2 : filmes) {
+                        JOptionPane.showMessageDialog(null, filme2.getTitulo() + ", " + filme2.getAnoLancamento());
+                    }
+                break;
 
-                case '6':
-                    break;
+                case '6':  // EXIBIR TITULO POR STRING
+                    String stringTitulo = JOptionPane.showInputDialog("Digite a string do titulo:");
+                    filmes = baseFilme.listByString(stringTitulo);
+                    for (Filme filme2 : filmes) {
+                        JOptionPane.showMessageDialog(null, filme2.getTitulo() + ", " + filme2.getAnoLancamento());
+                    }
+                break;
+
+                case '7':
+                break;
 
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida!");
             }
-        } while(selection != '6');
+        } while(selection != '7');
     }  
 }
